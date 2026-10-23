@@ -1,30 +1,33 @@
 {
-    "name": "tcdent/php-restclient", 
-    "version": "0.1.8.4", 
-    "description": "A generic REST API client for PHP", 
-    "type": "library", 
-    "keywords": ["REST", "api", "client", "curl", "JSON", "XML"], 
-    "homepage": "http://github.com/tcdent/php-restclient", 
-    "license": "MIT", 
+    "name": "madelan/php-restclient",
+    "description": "Cliente REST de Madelan: fork de tcdent/php-restclient con TLS prendido, armado de URL para GX y PHP 8.3",
+    "type": "library",
+    "keywords": ["REST", "api", "client", "curl", "JSON", "XML"],
+    "homepage": "https://github.com/stoyos/php-restclient",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Travis Dent", 
-            "role": "Developer", 
+            "name": "Travis Dent",
+            "role": "Developer",
             "email": "tcdent@gmail.com"
+        },
+        {
+            "name": "Sebastian Toyos",
+            "role": "Fork de Madelan"
         }
     ],
     "support": {
-        "issues": "http://github.com/tcdent/php-restclient/issues"
-    }, 
+        "issues": "https://github.com/stoyos/php-restclient/issues"
+    },
     "require": {
-        "php": ">=7.2", 
-        "ext-curl": "*", 
+        "php": ">=7.4",
+        "ext-curl": "*",
         "ext-json": "*"
-    }, 
+    },
     "require-dev": {
-        "php": ">=8.3", 
+        "php": ">=8.3",
         "phpunit/phpunit": ">=9.6"
-    }, 
+    },
     "autoload": {
         "files": ["restclient.php"]
     }

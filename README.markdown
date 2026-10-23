@@ -1,3 +1,44 @@
+PHP REST Client, fork de Madelan
+================================
+Fork de [tcdent/php-restclient](https://github.com/tcdent/php-restclient) 0.1.7, la versión que usaban las copias
+de los proyectos de Madelan. Es la única versión mantenida para todos (RXI-2365).
+
+Qué cambia respecto del original
+--------------------------------
+* **Verificación TLS prendida** (`CURLOPT_SSL_VERIFYHOST` 2 y `CURLOPT_SSL_VERIFYPEER` TRUE). El server necesita
+  `curl.cainfo` apuntando a un `cacert.pem` al día. Un endpoint con certificado propio pasa su `CURLOPT_CAINFO` en
+  `curl_options`.
+* **Fix para GX:** la extensión del formato (`format`) no se agrega a la URL; se usa solo para decodificar la
+  respuesta. Y `base_url` y la ruta se pegan tal cual, sin la `/` del medio: si la ruta no empieza con `/`, la
+  `base_url` tiene que terminar en `/`.
+* **HTTP/1.0**, como lo forzaban las copias.
+* **PHP 8.3 sin avisos:** `{$format}` en vez de `${format}`, `$url` declarada, `#[\ReturnTypeWillChange]` en los
+  métodos de Iterator y ArrayAccess, y el `foreach` sobre una respuesta decodificada como objeto ya no llama a
+  `reset()` sobre el objeto.
+* Sin el `strict_types` ni los type hints del 0.1.8: las llamadas de los proyectos no cambian.
+
+Instalación
+-----------
+En el `composer.json` del proyecto:
+
+``` json
+"repositories": [
+    { "type": "vcs", "url": "https://github.com/stoyos/php-restclient" }
+],
+"require": {
+    "madelan/php-restclient": "^1.0"
+}
+```
+
+y después `composer update madelan/php-restclient`. La versión sale del tag (`v1.0.0`).
+
+Al pasar un proyecto, el `require_once` de su copia (`php-restclient-master/restclient.php`) y la carpeta se sacan
+en el mismo cambio: si se cargan las dos, PHP corta con `Cannot declare class RestClient`.
+
+Lo que sigue es la documentación del original. Donde difiere, manda lo de arriba.
+
+---
+
 PHP REST Client
 ===============
 [![Total Downloads](http://poser.pugx.org/tcdent/php-restclient/downloads)](https://packagist.org/packages/tcdent/php-restclient)
